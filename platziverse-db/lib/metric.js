@@ -8,9 +8,7 @@ module.exports = function setupMetric (MetricModel, AgentModel) {
       include: [{
         attributes: [],
         model: AgentModel,
-        where: {
-          uuid
-        }
+        where: { uuid }
       }],
       raw: true
     })
@@ -19,17 +17,13 @@ module.exports = function setupMetric (MetricModel, AgentModel) {
   async function findByTypeAgentUuid (type, uuid) {
     return MetricModel.findAll({
       attributes: [ 'id', 'type', 'value', 'createdAt' ],
-      where: {
-        type
-      },
+      where: { type },
       limit: 20,
       order: [[ 'createdAt', 'DESC' ]],
       include: [{
         attributes: [],
         model: AgentModel,
-        where: {
-          uuid
-        }
+        where: { uuid }
       }],
       raw: true
     })

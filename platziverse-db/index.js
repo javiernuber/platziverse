@@ -21,10 +21,10 @@ module.exports = async function (config) {
   })
   const sequelize = setupDatabase(config)
   const AgentModel = setupAgentModel(config)
-  const MetrincModel = setupMetricModel(config)
+  const MetricModel = setupMetricModel(config)
 
-  AgentModel.hasMany(MetrincModel)
-  MetrincModel.belongsTo(AgentModel)
+  AgentModel.hasMany(MetricModel)
+  MetricModel.belongsTo(AgentModel)
 
   await sequelize.authenticate()
 
@@ -33,10 +33,10 @@ module.exports = async function (config) {
   }
 
   const Agent = setupAgent(AgentModel)
-  const Metrinc = setupMetric(MetrincModel)
+  const Metric = setupMetric(MetricModel, AgentModel)
 
   return {
     Agent,
-    Metrinc
+    Metric
   }
 }
