@@ -8,17 +8,20 @@ const chalk = require('chalk')
 const prompt = inquirer.createPromptModule()
 
 async function setup () {
-  const answer = await prompt([
-    {
-      type: 'confirm',
-      name: 'setup',
-      message: 'This will destroy your database, are you sure?'
+  const force = process.argv.slice(2).pop()
+  if (force !== '-y') {
+    const answer = await prompt([
+      {
+        type: 'confirm',
+        name: 'setup',
+        message: 'This will destroy your database, are you sure?'
+      }
+    ])
+  
+    if (!answer.setup) {
+      return console.log('Nothing happpen :)')
     }
-  ])
-
-  if (!answer.setup) {
-    return console.log('Nothing happpen :)')
-  }
+  }  
 
   const config = {
     database: process.env.DB_NAME || 'platziverse',
