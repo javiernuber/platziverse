@@ -47,7 +47,6 @@ function findByTypeAgentUuid (type, uuid) {
 }
 
 module.exports = {
-  single: metric,
   all: metrics,
   findByAgentUuid,
   findByTypeAgentUuid
