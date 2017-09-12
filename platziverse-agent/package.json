@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/javiernuber/platziverse/issues"
   },
-  "homepage": "https://github.com/javiernuber/platziverse#readme"
+  "homepage": "https://github.com/javiernuber/platziverse#readme",
+  "devDependencies": {
+    "standard": "^10.0.3"
+  }
 }
